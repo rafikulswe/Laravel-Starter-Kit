@@ -12,12 +12,12 @@ trait TraitRestDestroy
             }
 
             $entity = $this->repository->findById($id);
-            if (!$entity) {
-                $this->notFoundResponse();
+            if (empty($entity)) {
+                return $this->notFoundResponse('Data not found');
             }
 
-            $response = $this->repository->delete($id);
-            if (!$response) {
+            $executeResponse = $this->repository->delete($id);
+            if (!$executeResponse) {
                 $this->errorResponse();
             }
             return $this->deleteResponse();

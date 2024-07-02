@@ -46,23 +46,12 @@ $(document).on("click", ".data-list .delete", function (e) {
                     _token: csrf,
                     _method: "DELETE"
                 },
-                dataType: dataType,
-                success: function (data) {
-                    console.log(data);
-                    var dataError =
-                        dataType == "html" ? data.trim() : data.error;
-                    if (typeof dataError !== typeof undefined && dataError) {
-                        swalInit.fire({
-                            title: "Oops...",
-                            text: dataError,
-                            icon: "error",
-                            allowEscapeKey: false,
-                            allowEnterKey: false,
-                        });
-                    } else {
+                dataType: "json",
+                success: function (response) {
+                    if (response.code == 204) {
                         swalInit.fire({
                             title: "Deleted!",
-                            text: "This data has been deleted!",
+                            text: response.message,
                             confirmButtonColor: "#66BB6A",
                             icon: "success",
                             type: "success",
@@ -70,12 +59,20 @@ $(document).on("click", ".data-list .delete", function (e) {
                                 location.reload();
                             },
                         });
+                    } else {
+                        swalInit.fire({
+                            title: "Oops...",
+                            text: response.message,
+                            icon: "error",
+                            allowEscapeKey: false,
+                            allowEnterKey: false,
+                        });
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     swalInit.fire({
                         title: "Oops...",
-                        text: dataError,
+                        text: errorThrown,
                         icon: "error",
                         allowEscapeKey: false,
                         allowEnterKey: false,

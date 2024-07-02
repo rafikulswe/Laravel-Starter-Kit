@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Helper;
-use App\Models\Example;
 use Illuminate\Http\Request;
 use App\Repositories\ExampleRepository;
 use App\Traits\Controller\RestControllerTrait;
@@ -78,16 +77,5 @@ class ExampleController extends Controller
     {
         $data['example'] = $this->repository->findById($id);
         return view('example.update', $data);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $this->repository->delete($id);
     }
 }
