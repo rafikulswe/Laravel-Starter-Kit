@@ -1,0 +1,100 @@
+{
+    "resource": {
+        "permission_type": "RESOURCE",
+        "name": "example",
+        "display_name": "Example",
+        "resource_uri": "example",
+        "controller_name": "exampleController",
+        "server_url_prefix": "auth",
+        "component": "COMMON"
+    },
+    "scopes": [
+        {
+            "scope": "auth:example:menuAccess",
+            "display_name": "Menu Access",
+            "actions": [
+                {
+                    "http_method": "GET",
+                    "action_name": "index",
+                    "uri": "/example"
+                }
+            ]
+        },
+        {
+            "scope": "auth:example:list",
+            "display_name": "List",
+            "actions": [
+                {
+                    "http_method": "GET",
+                    "action_name": "index",
+                    "uri": "/example"
+                }
+            ]
+        },
+        {
+            "scope": "auth:example:view",
+            "display_name": "View",
+            "actions": [
+                {
+                    "http_method": "GET",
+                    "action_name": "show",
+                    "uri": "/example/*"
+                },
+                {
+                    "http_method": "GET",
+                    "action_name": "getByWhere",
+                    "uri": "/example/getByWhere"
+                }
+            ]
+        },
+        {
+            "scope": "auth:example:create",
+            "display_name": "Create",
+            "actions": [
+                {
+                    "http_method": "POST",
+                    "action_name": "store",
+                    "uri": "/example"
+                }
+            ]
+        },
+        {
+            "scope": "auth:example:edit",
+            "display_name": "Edit",
+            "actions": [
+                {
+                    "http_method": "PUT",
+                    "action_name": "update",
+                    "uri": "/example/*"
+                },
+                {
+                    "http_method": "PATCH",
+                    "action_name": "updateFields",
+                    "uri": "/example/*"
+                }
+            ]
+        },
+        {
+            "scope": "auth:example:delete",
+            "display_name": "Delete",
+            "actions": [
+                {
+                    "http_method": "DELETE",
+                    "action_name": "destroy",
+                    "uri": "/example/*"
+                }
+            ]
+        },
+        {
+            "scope": "auth:example:multiSelect",
+            "display_name": "Multiple Selection",
+            "actions": [
+                {
+                    "http_method": "POST",
+                    "action_name": "bulk",
+                    "uri": "/example/bulk"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "resource": {
+        "permission_type": "RESOURCE",
+        "name": "customer",
+        "display_name": "Customer",
+        "resource_uri": "customer",
+        "controller_name": "CustomerController",
+        "server_url_prefix": "auth",
+        "component": "COMMON"
+    },
+    "scopes": [
+        {
+            "scope": "auth:customer:menuAccess",
+            "display_name": "Menu Access",
+            "actions": [
+                {
+                    "http_method": "GET",
+                    "action_name": "index",
+                    "uri": "/customer"
+                }
+            ]
+        },
+        {
+            "scope": "auth:customer:list",
+            "display_name": "List",
+            "actions": [
+                {
+                    "http_method": "GET",
+                    "action_name": "index",
+                    "uri": "/customer"
+                }
+            ]
+        },
+        {
+            "scope": "auth:customer:view",
+            "display_name": "View",
+            "actions": [
+                {
+                    "http_method": "GET",
+                    "action_name": "show",
+                    "uri": "/customer/*"
+                },
+                {
+                    "http_method": "GET",
+                    "action_name": "getByWhere",
+                    "uri": "/customer/getByWhere"
+                }
+            ]
+        },
+        {
+            "scope": "auth:customer:create",
+            "display_name": "Create",
+            "actions": [
+                {
+                    "http_method": "POST",
+                    "action_name": "store",
+                    "uri": "/customer"
+                }
+            ]
+        },
+        {
+            "scope": "auth:customer:edit",
+            "display_name": "Edit",
+            "actions": [
+                {
+                    "http_method": "PUT",
+                    "action_name": "update",
+                    "uri": "/customer/*"
+                },
+                {
+                    "http_method": "PATCH",
+                    "action_name": "updateFields",
+                    "uri": "/customer/*"
+                }
+            ]
+        },
+        {
+            "scope": "auth:customer:delete",
+            "display_name": "Delete",
+            "actions": [
+                {
+                    "http_method": "DELETE",
+                    "action_name": "destroy",
+                    "uri": "/customer/*"
+                }
+            ]
+        },
+        {
+            "scope": "auth:customer:multiSelect",
+            "display_name": "Multiple Selection",
+            "actions": [
+                {
+                    "http_method": "POST",
+                    "action_name": "bulk",
+                    "uri": "/customer/bulk"
+                }
+            ]
+        }
+    ]
+}
