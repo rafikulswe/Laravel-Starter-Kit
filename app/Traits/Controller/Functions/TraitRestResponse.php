@@ -3,10 +3,7 @@
 namespace App\Traits\Controller\Functions;
 
 use App\Exceptions\ErrorException;
-use App\Exceptions\NotFoundException;
-use App\Exceptions\PermissionException;
-use App\Exceptions\AuthenticationException;
-use App\Exceptions\ExcelValidatorException;
+use Illuminate\Auth\AuthenticationException;
 
 trait TraitRestResponse
 {
@@ -59,16 +56,15 @@ trait TraitRestResponse
         return response()->json($response['data'], $response['code']);
     }
 
-    protected function notFoundResponse()
+    protected function notFoundResponse($message = 'Not Found')
     {
         $response = [
-            'code'         => 404,
-            'status'    => 'error',
-            'data'         => 'Resource Not Found',
-            'message'     => 'Not Found'
+            'code'    => 404,
+            'status'  => 'error',
+            'data'    => 'Resource Not Found',
+            'message' => $message
         ];
-
-        throw new NotFoundException($response['data']);
+        return response()->json($response);
     }
 
     protected function authenticationRequiredResponse()
@@ -83,28 +79,16 @@ trait TraitRestResponse
         throw new AuthenticationException($response['data']);
     }
 
-    protected function forbiddenResponse()
-    {
-        $response = [
-            'code'         => 403,
-            'status'     => 'error',
-            'data'         => 'Forbidden Request',
-            'message'     => 'Forbidden'
-        ];
-
-        throw new PermissionException($response['data']);
-    }
-
     protected function deleteResponse()
     {
         $response = [
             'code'         => 204,
             'status'     => 'success',
             'data'         => [],
-            'message'     => 'Delete Successfully !'
+            'message'     => 'This data has been deleted !'
         ];
 
-        return response()->json($response['data'], $response['code']);
+        return response()->json($response);
     }
 
     protected function emptyResponse()
@@ -129,16 +113,5 @@ trait TraitRestResponse
         ];
 
         throw new ErrorException($response['data']);
-    }
-
-    protected function importErrorResponse($data = [])
-    {
-        $response = [
-            'code'    => 412,
-            'status'  => 'error',
-            'data'    => $data,
-            'message' => 'Validation Error!'
-        ];
-        throw new ExcelValidatorException($response['data']);
     }
 }
