@@ -9,10 +9,14 @@
                         <div class="row">
                             <div class="col-sm-12 col-lg-12">
                                 <div class="form-group">
-                                    <label for="title">Title <span class="text-danger">*</span></label>
+                                    {{-- <label for="title">Title <span class="text-danger">*</span></label>
                                     <input type="text" id="title" name="title" maxlength="80"
                                         class="form-control maxlength-options" value=""
-                                        placeholder="Enter The Title" required>
+                                        placeholder="Enter The Title" required> --}}
+
+                                    <x-forms.label>Title</x-forms.label>
+                                    <x-forms.input type="text" name="title" maxlength="80"
+                                        placeholder="Enter The Title"></x-forms.input>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-lg-12">

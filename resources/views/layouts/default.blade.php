@@ -53,7 +53,7 @@
                     <span class="d-none d-lg-inline-block">{{ Auth::user()->name }}</span>
                 </a>
 
-                <div class="dropdown-menu dropdown-menu-right data-list">
+                <div class="dropdown-menu dropdown-menu-right">
 
                     <a modal-title="" modal-type="show" modal-size="extra-large" modal-class="" selector="EditUser"
                         modal-link="{{ route('provider.profileEdit') }}" class="dropdown-item open-modal"><i
